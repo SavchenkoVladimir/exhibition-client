@@ -1,0 +1,95 @@
+div.mainPage{
+    width: 100%;
+    background-color: rgb(220, 220, 220);
+}
+div.mainPage > ul{
+    list-style-type: none;
+}
+div.dropdowns{
+    margin: 20px;
+}
+button.btn.btn-md,
+div.radio_button,
+div.checkboxes,
+div.datepicker,
+a.open_popup{
+    margin: 20px 0 20px 30px;    
+}
+.d-inline-block.dropdown-menu{
+    background-color: rgba(200, 200, 200, 1) ;
+}
+.custom-day {      
+    text-align: center;
+    padding: 0.185rem 0.25rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+    width: 2rem;
+}
+.custom-day:hover {
+    background-color: lightcoral;
+}
+.weekend {
+    background-color: #f0ad4e;
+    border-radius: 1rem;
+    color: white;
+}
+.hidden {
+    display: none;
+}
+/* Bootstrap datepicker styling */
+:host /deep/ .d-inline-block.dropdown-menu{
+    background-color: rgba(200, 200, 200, 1) ;
+}
+:host /deep/ .custom-day {      
+    text-align: center;
+    padding: 0.185rem 0.25rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+    width: 2rem;
+}
+:host /deep/ .custom-day:hover {
+    background-color: lightcoral;
+}
+:host /deep/ .weekend {
+    background-color: #f0ad4e;
+    border-radius: 1rem;
+    color: white;
+}
+:host /deep/ .hidden {
+    display: none;
+}
+.form-control.custom-datepicker,
+div.input-group-addon{
+    border-color: #0044cc;
+}
+:host /deep/ ngb-datepicker.d-inline-block.dropdown-menu{
+    border-color: #f0ad4e;
+}
+:host /deep/ table.w-100{
+    background-color: gray;
+    color: red;
+}
+/* PrimeNg checkboxes */
+:host /deep/ .ui-chkbox-label{
+    font-weight: bolder;
+    color: rgb(29, 47, 183);
+    margin-bottom: 0;
+}
+:host /deep/ .ui-chkbox-box{
+    border-color: rgb(29, 47, 183);
+    width: 18px;
+    height: 18px;
+}
+:host /deep/ .ui-chkbox-icon{
+    width: 100%;
+    height: 100%;    
+}
+/* Bootstrap checkboxes */
+.bootstrap-checkbox{
+    color: rgb(185, 128, 21);
+}
+/* Bootstrap modal styling */
+:host /deep/ div.modal-content{
+    font-weight: bolder;
+    color: rgb(8, 104, 167);
+}

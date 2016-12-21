@@ -1,0 +1,70 @@
+<div class="loggingForm">         
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h1>Sign Up</h1>
+        <div *ngIf="this.alertService.alert.message != ''">
+            <ngb-alert [type]="this.alertService.alert.type" (close)="this.alertService.closeAlert()">
+                {{ this.alertService.alert.message }}
+            </ngb-alert>
+        </div>
+        <p>
+            <label>Name:</label>
+            <input type="text" formControlName="name" name="name" />
+        </p> 
+        <!-- 
+            form elements stages: dirty, touched, valid 
+        -->
+        <div *ngIf="!name.valid && name.touched"  
+            class="error_message">First name is invalid.<br />
+            {{name.errors.error}}
+        </div>
+        <!--
+            Specific validation can be implemented as
+                <div *ngIf="firstName.hasError('required')"  
+                   class="ui error message">SKU is required
+                </div>
+        -->        
+        <p>
+            <label>Email</label>
+            <input type="email" formControlName="email" name="email" />
+        </p>
+        <div *ngIf="!email.valid && email.touched"  
+            class="error_message">Email is invalid.
+    </div> 
+    <p>
+        <label>Goal</label>
+        <input type="goal" formControlName="goal">
+    </p>   
+    <div *ngIf="!goal.valid && goal.touched"  
+        class="error_message">Goal field is invalid.
+</div> 
+<p>
+    <label>Location</label>            
+<ng2-completer formControlName="location" [dataService]="dataService" [minSearchLength]="0"></ng2-completer>            
+</p>
+<div *ngIf="!location.valid && location.touched"  
+    class="error_message">Location is invalid.
+</div> 
+<div *ngIf="!location.valid && location.touched"  
+    class="error_message">Location is invalid.
+</div> 
+
+<p>
+    <button type="submit">Submit</button>
+</p> 
+<!-- Display form errors if errors exists -->
+<div *ngIf="form.errors" class="error_message">
+    {{form.errors.error}}
+</div> 
+</form>
+<ul>
+    <li><a routerLink="/home">Go home</a></li>
+    <router-outlet></router-outlet>  
+</ul>
+</div>
+<!--
+    Specific validation can be implemented as
+        <div *ngIf="firstName.hasError('required')"  
+           class="ui error message">SKU is required
+        </div>
+-->
+<!-- [disabled]="!form.valid"-->

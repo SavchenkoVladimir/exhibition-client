@@ -1,0 +1,15 @@
+<div class="loggingForm">        
+    <h1>Home</h1>
+    <ul>
+        <li><a routerLink="/login">Log in</a></li>
+        <li><a routerLink="/signUp">SignUp</a></li>
+        <li><a routerLink="/mainPage">Main page</a></li>
+        <router-outlet></router-outlet>  
+    </ul>
+    <ul *ngIf="this._login.getRole() === 'admin'">
+        <li><a routerLink="/dashboard">Dashboard</a></li>
+    </ul>    
+    <ul>
+        <li><a href="#"(click)="logOut($event)">Log out</a></li>
+    </ul>
+</div>

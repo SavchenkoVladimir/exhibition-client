@@ -1,0 +1,48 @@
+@import './assets/bootstrap-4.0.0-alpha.5/dist/css/bootstrap.min.css';
+@import './assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
+@import './assets/primeNG/primeng.min.css';
+@import './assets/primeNG/themes/omega/theme.css';
+
+h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 150%;
+}
+h2, h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+body {
+    margin: 2em;
+}
+div.loggingForm > form{
+    width: 280px;
+    border: 1px solid rgba(200, 200, 200, 1);
+    padding: 20px;
+    color:#369;
+    font-weight: bold;
+}
+form.login > p{
+    width: 100%;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="phone"],
+input.completer-input,
+div.completer-holder{
+    float: right;
+}
+div.completer-holder{
+    display:inline-block;
+}
+div.loggingForm > ul{
+    list-style-type: none;
+}
+div.error_message{
+    color: rgb(212, 0, 71);
+}
+ul.pagination.dashboard{
+    margin-left: 45%;
+}

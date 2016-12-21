@@ -1,0 +1,131 @@
+
+<div class="mainPage">
+    <h1>Main page.</h1>
+    <ul>
+        <li><a routerLink="/home">Go home</a></li>
+        <router-outlet></router-outlet>
+    </ul>
+</div>
+
+<div class="dropdowns">
+    <h5>Dropdowns</h5>
+    <div class="row">
+        <div class="col-xs-3">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>Dropdown down</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <button class="dropdown-item">Action - 1</button>
+                    <button class="dropdown-item">Another Action</button>
+                    <button class="dropdown-item">Something else is here</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div ngbDropdown [up]="true" class="d-inline-block">
+                 <button class="btn btn-outline-primary" id="dropdownMenu2" ngbDropdownToggle>Dropup up</button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item">Action - 1</button>
+                    <button class="dropdown-item">Another Action</button>
+                    <button class="dropdown-item">Something else is here</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+</div>
+
+<div class="radio_button">
+    <h5>Radio</h5>
+    <div [(ngModel)]="model" ngbRadioGroup name="radioBasic">
+        <label class="btn btn-primary">
+            <input type="radio" value="left" [(ngModel)]="modelRadio"> Left 
+        </label>
+        <label class="btn btn-primary">
+            <input type="radio" value="middle" [(ngModel)]="modelRadio"> Middle
+        </label>
+        <label class="btn btn-primary">
+            <input type="radio" value="right" [(ngModel)]="modelRadio"> Right
+        </label>
+    </div>
+    <hr>
+    <pre>{{modelRadio}}</pre>
+</div>
+
+<div class="checkboxes">
+    <h5>Checkboxes</h5>
+    <h6>Bootstrap</h6>
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary bootstrap-checkbox" [class.active]="modelCheckbox.left">
+            <input type="checkbox" [(ngModel)]="modelCheckbox.left"> Left
+        </label>
+        <label class="btn btn-primary bootstrap-checkbox" [class.active]="modelCheckbox.middle">
+            <input type="checkbox" [(ngModel)]="modelCheckbox.middle"> Middle
+        </label>
+        <label class="btn btn-primary bootstrap-checkbox" [class.active]="modelCheckbox.right">
+            <input type="checkbox" [(ngModel)]="modelCheckbox.right"> Right
+        </label>
+    </div>
+    <pre>{{modelCheckbox | json}}</pre> 
+    
+    <h6>PrimeNG first formgroup</h6>
+    <div class="ui-g" style="width:250px;margin-bottom:10px">
+        <div class="ui-g-12"><p-checkbox ui-chkbox="selectedCities" name="group1" value="New York" label="New York" [(ngModel)]="selectedCities"></p-checkbox></div>
+        <div class="ui-g-12"><p-checkbox ui-chkbox="selectedCities" name="group1" value="San Francisco" label="San Francisco" [(ngModel)]="selectedCities"></p-checkbox></div>
+        <div class="ui-g-12"><p-checkbox ui-chkbox="selectedCities" name="group1" value="Los Angeles" label="Los Angeles" [(ngModel)]="selectedCities"></p-checkbox></div>
+    </div>
+    Selected Cities: <span *ngFor="let city of selectedCities" style="margin-right:10px">{{city}}</span><br /><br /> 
+    <h6>PrimeNG second formgroup</h6>
+    <div class="ui-g" style="width:250px;margin-bottom:10px">
+        <div class="ui-g-12"><p-checkbox class="selectedCitiesTwo" name="group2" value="New York" label="New York" [(ngModel)]="selectedCitiesTwo"></p-checkbox></div>
+        <div class="ui-g-12"><p-checkbox class="selectedCitiesTwo" name="group2" value="San Francisco" label="San Francisco" [(ngModel)]="selectedCitiesTwo"></p-checkbox></div>
+        <div class="ui-g-12"><p-checkbox class="selectedCitiesTwo" name="group2" value="Los Angeles" label="Los Angeles" [(ngModel)]="selectedCitiesTwo"></p-checkbox></div>
+    </div>
+    Selected Cities: <span *ngFor="let cityTwo of selectedCitiesTwo" style="margin-right:10px">{{cityTwo}}</span>      
+</div>
+<hr />
+
+<div class="datepicker">
+    <h5>Datepicker</h5>
+    <form class="form-inline">
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control custom-datepicker" placeholder="yyyy-mm-dd"
+                       name="dp" [(ngModel)]="datepickerModel" ngbDatepicker #d="ngbDatepicker" firstDayOfWeek="1" [dayTemplate]="customDay">
+                       <div class="input-group-addon" (click)="d.toggle()">
+                    <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" class="datepicker-img"/>
+                </div>
+            </div>
+        </div>
+    </form>
+    <template #customDay let-date="date" let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled">
+        <span class="custom-day" [class.weekend]="isWeekend(date)"
+              [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth" [class.text-muted]="disabled">
+              {{ date.day }}
+    </span>
+</template>
+<hr/>
+<pre>Model: {{ datepickerModel | json }}</pre>   
+</div>
+<hr />
+
+<template ngbModalContainer></template>
+<template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Modal title</h4>
+    </div>
+    <div class="modal-body">
+        <p>One fine body&hellip;</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    </div>
+</template>
+<button class="btn btn-md btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+<hr>
+<pre>{{closeResult}}</pre>
+
+
