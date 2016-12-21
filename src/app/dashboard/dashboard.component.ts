@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { DataTableModule, DataTable } from 'primeng/primeng';
+import { DataTable } from 'primeng/primeng';
 import { HttpService } from '../http/http.service';
 import { AlertService } from '../helpers/alert.service';
 import { Col } from '../helpers/col.declaration';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'my-app',
@@ -19,6 +20,8 @@ export class DashboardComponent implements OnInit {
     public sortingOrder: string = "";
     public filters: string = "";
     public stacked: boolean;
+    public page: any;
+    public page1: any;
 
     constructor(private _http: HttpService, public alertService: AlertService) {
 
@@ -37,7 +40,7 @@ export class DashboardComponent implements OnInit {
             }
             this._filter();
         };
-        //-----------------------------
+        //-----------------------------  
     }
 
     ngOnInit(): void {
@@ -48,7 +51,6 @@ export class DashboardComponent implements OnInit {
             { field: 'goal', header: 'goal', placeholder: "contain" },
             { field: 'location', header: 'location', placeholder: "equals" }
         ];
-        //        console.log(DataTable);
     }
 
     pageBack(event) {
@@ -71,7 +73,7 @@ export class DashboardComponent implements OnInit {
 
     setFilter(event) {
         var filterQuery = "";
-        
+
         // Debug info
         console.log(event);
 
