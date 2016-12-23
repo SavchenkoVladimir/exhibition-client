@@ -27,7 +27,7 @@ export class HttpService {
     getQuizResults(body) {
         let headers = this.getHeaders();
         
-        console.log(body);
+//        console.log(body);
 
         return this._http.get(`http://localhost:3000/app/quizResults/?${body}`, { headers: headers })
             .map(data => data);

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { DataTable } from 'primeng/primeng';
+//import { DataTable } from 'primeng/primeng';
 import { HttpService } from '../http/http.service';
 import { AlertService } from '../helpers/alert.service';
 import { Col } from '../helpers/col.declaration';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
+import { Table } from '../table/table.component';
 
 @Component({
     selector: 'my-app',
@@ -13,7 +15,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 export class DashboardComponent implements OnInit {
     public quizResults: any[] = [];
-    public cols: Col[];
+    public cols: any[];
     public currentPage: number = 0;
     public recordsInPage: number = 2;
     public sortingField: string = "";
@@ -26,30 +28,31 @@ export class DashboardComponent implements OnInit {
     constructor(private _http: HttpService, public alertService: AlertService) {
 
         // This is a way to owerwrite libruary class property
-        DataTable.prototype.filter = function(value, field, matchMode) {
-
-            this.filterConstraints.equals = function(value, filter) { };
-            this.filterConstraints.regex = function(value, filter) { };
-
-            if (!this.isFilterBlank(value))
-                this.filters[field] = { value: value, matchMode: matchMode };
-            else if (this.filters[field])
-                delete this.filters[field];
-            if (this.lazy) {
-                this.stopFilterPropagation = true;
-            }
-            this._filter();
-        };
-        //-----------------------------  
+//        DataTable.prototype.filter = function(value, field, matchMode) {
+//
+//            this.filterConstraints.equals = function(value, filter) { };
+//            this.filterConstraints.regex = function(value, filter) { };
+//
+//            if (!this.isFilterBlank(value))
+//                this.filters[field] = { value: value, matchMode: matchMode };
+//            else if (this.filters[field])
+//                delete this.filters[field];
+//            if (this.lazy) {
+//                this.stopFilterPropagation = true;
+//            }
+//            this._filter();
+//        };
+        //-----------------------------    
+//        console.log(Table)      ;
     }
 
     ngOnInit(): void {
         this.getQuizResults();
         this.cols = [
-            { field: 'name', header: 'name', placeholder: "starts with" },
-            { field: 'email', header: 'email', placeholder: "contain" },
-            { field: 'goal', header: 'goal', placeholder: "contain" },
-            { field: 'location', header: 'location', placeholder: "equals" }
+            { field: 'name', header: 'name', placeholder: "starts with"/*, matchmode: "regex"*/ },
+            { field: 'email', header: 'email', placeholder: "contain", matchmode: "startsWith" },
+            { field: 'goal', header: 'goal', placeholder: "contain", matchmode: "startsWith" },
+            { field: 'location', header: 'location', placeholder: "equals", matchmode: "startsWith" }
         ];
     }
 
@@ -122,7 +125,7 @@ export class DashboardComponent implements OnInit {
                 this.quizResults = JSON.parse(data['_body']);
 
                 // Debug info
-                console.log(data);
+//                console.log(data);
             },
             err => {
                 // Has to be handled reasonably

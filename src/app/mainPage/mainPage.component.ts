@@ -11,7 +11,7 @@ class CustomPopupComponent {
 @Component({
     selector: 'my-app',
     templateUrl: './mainPage.html',
-    styleUrls: ['./mainPage.css']
+    styleUrls: ['./mainPage.css'],
 })
 
 export class MainPageComponent {
