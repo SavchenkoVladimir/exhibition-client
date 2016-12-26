@@ -6,7 +6,7 @@ import { AlertService } from '../helpers/alert.service';
 import { Col } from '../helpers/col.declaration';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
-import { Table } from '../table/table.component';
+//import { Table } from '../table/table.component';
 
 @Component({
     selector: 'my-app',

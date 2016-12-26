@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { Ng2CompleterModule } from "ng2-completer";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CheckboxModule, /*DataTableModule,*/ SharedModule, BrowserModule, InputTextModule, ButtonModule, DialogModule } from 'primeng/primeng';
+import { CheckboxModule, /*DataTableModule,*/ SharedModule, InputTextModule, ButtonModule, DialogModule } from 'primeng/primeng';
 
 import { LoginService } from './services/login.service';
 import { UserGuard } from './services/user.guard';
