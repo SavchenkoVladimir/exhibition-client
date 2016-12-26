@@ -4,6 +4,7 @@
         <li><a routerLink="/login">Log in</a></li>
         <li><a routerLink="/signUp">SignUp</a></li>
         <li><a routerLink="/mainPage">Main page</a></li>
+        <li><a routerLink="/inherit">Inherit</a></li>
         <router-outlet></router-outlet>  
     </ul>
     <ul *ngIf="this._login.getRole() === 'admin'">

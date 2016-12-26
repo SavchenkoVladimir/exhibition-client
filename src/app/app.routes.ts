@@ -8,7 +8,7 @@ import { LoginComponent } from './logIn/login.component';
 import { SignUpComponent } from './signUp/signUp.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { InheritanceComponent } from './inheritance/inherit.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,5 +16,6 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signUp', component: SignUpComponent, canActivate: [UserGuard] },
     { path: 'mainPage', component: MainPageComponent, canActivate: [UserGuard] },
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },    
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
+    { path: 'inherit', component: InheritanceComponent, canActivate: [AdminGuard] },
 ];

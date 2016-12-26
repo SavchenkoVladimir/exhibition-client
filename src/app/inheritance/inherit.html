@@ -1,0 +1,10 @@
+<div class="loggingForm">        
+    <h1>Inherit</h1>
+    <h3 class="first">Single</h3>
+    <p-dropdown [options]="cities" [(ngModel)]="selectedCity"></p-dropdown>
+    <p>Selected City: {{selectedCity ? selectedCity.name : 'none'}}</p>
+    <ul>
+        <li><a routerLink="/home">Go home</a></li>
+        <router-outlet></router-outlet>  
+    </ul>
+</div>

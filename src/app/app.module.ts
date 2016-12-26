@@ -5,7 +5,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { Ng2CompleterModule } from "ng2-completer";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CheckboxModule, /*DataTableModule,*/ SharedModule, InputTextModule, ButtonModule, DialogModule } from 'primeng/primeng';
+import { CheckboxModule, DataTableModule, SharedModule, InputTextModule, ButtonModule, DialogModule } from 'primeng/primeng';
+import { DropdownModule } from 'primeng/primeng';
 
 import { LoginService } from './services/login.service';
 import { UserGuard } from './services/user.guard';
@@ -20,6 +21,7 @@ import { LoginComponent } from './logIn/login.component';
 import { SignUpComponent } from './signUp/signUp.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InheritanceComponent } from './inheritance/inherit.component';
 
 import { TableModule } from './table/table.component';
 
@@ -27,14 +29,15 @@ import { TableModule } from './table/table.component';
     imports: [
         BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(routes),
         FormsModule, ReactiveFormsModule, Ng2CompleterModule, NgbModule.forRoot(),
-        CheckboxModule, /*DataTableModule*/ TableModule, SharedModule, BrowserModule, InputTextModule, ButtonModule, DialogModule
+        CheckboxModule, DataTableModule, /*TableModule*/ SharedModule, BrowserModule,
+        InputTextModule, ButtonModule, DialogModule, DropdownModule
     ],
     declarations: [
         AppComponent, HomeComponent, LoginComponent, SignUpComponent, MainPageComponent,
-        DashboardComponent
+        DashboardComponent, InheritanceComponent
     ],
     providers: [HttpService, LoginService, UserGuard, AdminGuard, AlertService],
-//    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+    //    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
