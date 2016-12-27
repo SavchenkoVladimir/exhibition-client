@@ -1,13 +1,11 @@
-import { Component, NgModule, Input } from '@angular/core';
+import { Component, NgModule, forwardRef } from '@angular/core';
 import { ToggleButtonModule, ToggleButton } from 'primeng/primeng';
-
-var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var forms_1 = require('@angular/forms');
+import { CommonModule } from '@angular/common';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 var TOGGLEBUTTON_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function() { return Button; }),
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function() { return Button; }),
     multi: true
 };
 
@@ -20,7 +18,7 @@ class Button extends ToggleButton {
     public entered: string;
 
     mouseEnter(event) {
-        this.entered = "Mouse entered";
+        this.entered = "Mouse entered";        
     }
 
     mouseLeaved(event) {
@@ -29,7 +27,7 @@ class Button extends ToggleButton {
 }
 
 @NgModule({
-    imports: [common_1.CommonModule],
+    imports: [CommonModule],
     exports: [Button],
     declarations: [Button]
 })

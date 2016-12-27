@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { enableProdMode } from '@angular/core';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { Ng2CompleterModule } from "ng2-completer";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CheckboxModule, DataTableModule, SharedModule, InputTextModule,/* ButtonModule,*/ DialogModule } from 'primeng/primeng';
+import { CheckboxModule, SharedModule, InputTextModule, DialogModule } from 'primeng/primeng';
+import { DataTableModule, InputSwitchModule } from 'primeng/primeng';
 
 import { ToggleButtonModule } from 'primeng/primeng';
 import { ButtonModule } from './inheritance/toggle';
@@ -24,22 +26,23 @@ import { SignUpComponent } from './signUp/signUp.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InheritanceComponent } from './inheritance/inherit.component';
+import { InputComponent } from './input/input.component';
 
-import { TableModule } from './table/table.component';
+import { TableModule } from './table/table';
 
 @NgModule({
     imports: [
         BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(routes),
         FormsModule, ReactiveFormsModule, Ng2CompleterModule, NgbModule.forRoot(),
-        CheckboxModule, DataTableModule, /*TableModule*/ SharedModule, BrowserModule,
-        InputTextModule, ButtonModule, DialogModule, /*ToggleButtonModule,*/ ButtonModule
+        CheckboxModule, DataTableModule, /*TableModule,*/ SharedModule, BrowserModule,
+        InputTextModule, ButtonModule, DialogModule, ButtonModule, InputSwitchModule
     ],
     declarations: [
         AppComponent, HomeComponent, LoginComponent, SignUpComponent, MainPageComponent,
-        DashboardComponent, InheritanceComponent
+        DashboardComponent, InheritanceComponent, InputComponent
     ],
     providers: [HttpService, LoginService, UserGuard, AdminGuard, AlertService],
-    //    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+    //        schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

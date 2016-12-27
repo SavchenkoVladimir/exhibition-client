@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-//import { DataTable } from 'primeng/primeng';
+//import { DataTable } from 'primeng/primeng';//Is needed if Datatable is overridden directly.
 import { HttpService } from '../http/http.service';
 import { AlertService } from '../helpers/alert.service';
 import { Col } from '../helpers/col.declaration';

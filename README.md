@@ -29,3 +29,22 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 ## Further help
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+To enable production mode and thus disable debugging information
+import { enableProdMode } from '@angular/core';
+enableProdMode();
+
+
+To get a component instance execute
+ng.probe($0).componentInstance
+ng.probe($0)._debugInfo._view.changeDetectorRef.detectChanges()
+
+{ //... 
+    "compilerOptions": { 
+        "sourceMap": true, 
+    } 
+    //... 
+}
+And then put 'debugger;' in any place you of your code to get a breakpoint.
