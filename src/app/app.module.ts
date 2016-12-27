@@ -5,8 +5,10 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { Ng2CompleterModule } from "ng2-completer";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CheckboxModule, DataTableModule, SharedModule, InputTextModule, ButtonModule, DialogModule } from 'primeng/primeng';
-import { DropdownModule } from 'primeng/primeng';
+import { CheckboxModule, DataTableModule, SharedModule, InputTextModule,/* ButtonModule,*/ DialogModule } from 'primeng/primeng';
+
+import { ToggleButtonModule } from 'primeng/primeng';
+import { ButtonModule } from './inheritance/toggle';
 
 import { LoginService } from './services/login.service';
 import { UserGuard } from './services/user.guard';
@@ -30,7 +32,7 @@ import { TableModule } from './table/table.component';
         BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(routes),
         FormsModule, ReactiveFormsModule, Ng2CompleterModule, NgbModule.forRoot(),
         CheckboxModule, DataTableModule, /*TableModule*/ SharedModule, BrowserModule,
-        InputTextModule, ButtonModule, DialogModule, DropdownModule
+        InputTextModule, ButtonModule, DialogModule, /*ToggleButtonModule,*/ ButtonModule
     ],
     declarations: [
         AppComponent, HomeComponent, LoginComponent, SignUpComponent, MainPageComponent,

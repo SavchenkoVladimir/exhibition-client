@@ -19,9 +19,9 @@ var inputtext_1 = require('primeng/components/inputtext/inputtext');
 })
 export class Table extends DataTable implements OnInit {
     //    @Input() value: string;
-    constructor(/*el: any, domHandler: any, differs: any, renderer: any, changeDetector: any*/) {
-        //        super(el, domHandler, differs, renderer, changeDetector);        
-        super.filterConstraints.regex = function() { };
+    constructor(el: any, domHandler: any, differs: any, renderer: any, changeDetector: any) {
+        super(el, domHandler, differs, renderer, changeDetector);
+        //        super.filterConstraints.regex = function() { };
         //        super.constructor(el, domHandler, differs, renderer, changeDetector);
 
     }
