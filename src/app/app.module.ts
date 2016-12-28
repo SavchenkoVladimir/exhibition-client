@@ -27,14 +27,14 @@ import { SwitchModule } from './inherited/input';
 import { ButtonModule } from './inherited/toggle';
 
 // Enable prod mode
-//enableProdMode();
+enableProdMode();
 
 @NgModule({
     imports: [
         BrowserModule, HttpModule, RouterModule.forRoot(routes), FormsModule,
         ReactiveFormsModule, Ng2CompleterModule, NgbModule.forRoot(), CheckboxModule,
-        TableModule, SharedModule, BrowserModule, InputTextModule, ButtonModule,
-        DialogModule, SwitchModule
+        SharedModule, BrowserModule, InputTextModule, ButtonModule, DialogModule,
+        SwitchModule, TableModule, 
     ],
     declarations: [
         AppComponent, HomeComponent, LoginComponent, SignUpComponent, MainPageComponent,

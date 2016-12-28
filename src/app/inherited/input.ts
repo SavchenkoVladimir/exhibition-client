@@ -12,7 +12,7 @@ var INPUTSWITCH_VALUE_ACCESSOR = {
 };
 
 @Component({
-    selector: 'p-inputSwitches',
+    selector: 'p-inputSwitch',
     template: "\n        <div [ngClass]=\"{'ui-inputswitch ui-widget ui-widget-content ui-corner-all': true,\n            'ui-state-disabled': disabled,'ui-inputswitch-checked':checked}\" (click)=\"toggle($event, in)\"\n  (mouseover)=\"mouseEnter($event)\" (mouseleave)=\"mouseLeaved($event)\"   [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-inputswitch-off\">\n                <span class=\"ui-inputswitch-offlabel\">{{offLabel}}</span>\n            </div>\n            <div class=\"ui-inputswitch-on\">\n                <span class=\"ui-inputswitch-onlabel\">{{onLabel}}</span>\n            </div>\n            <div [ngClass]=\"{'ui-inputswitch-handle ui-state-default':true, 'ui-state-focus':focused}\"></div>\n            <div class=\"ui-helper-hidden-accessible\">\n                <input #in type=\"checkbox\" (focus)=\"onFocus($event)\" (blur)=\"onBlur($event)\" readonly=\"readonly\"/>\n            </div>\n        </div>\n  <br /> {{entered}}    ",
     providers: [INPUTSWITCH_VALUE_ACCESSOR, DomHandler]
 })
