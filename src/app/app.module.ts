@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { enableProdMode, NgModule } from '@angular/core';
+import { /*enableProdMode,*/ NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -21,24 +21,25 @@ import { SignUpComponent } from './signUp/signUp.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InputComponent } from './input/input.component';
+import { CameraComponent } from './camera/camera.component';
 
-import { TableModule } from './inherited/table';
-import { SwitchModule } from './inherited/input';
-import { ButtonModule } from './inherited/toggle';
+//import { TableModule } from './inherited/table';
+//import { SwitchModule } from './inherited/input';
 
-// Enable prod mode
-enableProdMode();
+import { DataTableModule, InputSwitchModule } from 'primeng/primeng';
+
+//enableProdMode();
 
 @NgModule({
     imports: [
         BrowserModule, HttpModule, RouterModule.forRoot(routes), FormsModule,
         ReactiveFormsModule, Ng2CompleterModule, NgbModule.forRoot(), CheckboxModule,
-        SharedModule, BrowserModule, InputTextModule, ButtonModule, DialogModule,
-        SwitchModule, TableModule, 
+        SharedModule, BrowserModule, InputTextModule, DialogModule, //SwitchModule, 
+        /*TableModule,*/ DataTableModule, InputSwitchModule
     ],
     declarations: [
         AppComponent, HomeComponent, LoginComponent, SignUpComponent, MainPageComponent,
-        DashboardComponent, InputComponent
+        DashboardComponent, InputComponent, CameraComponent
     ],
     providers: [HttpService, LoginService, UserGuard, AdminGuard, AlertService],
     bootstrap: [AppComponent]

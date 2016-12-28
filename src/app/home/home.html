@@ -3,12 +3,13 @@
     <ul>
         <li><a routerLink="/login">Log in</a></li>
         <li><a routerLink="/signUp">SignUp</a></li>
-        <li><a routerLink="/mainPage">Main page</a></li>
-        <li><a routerLink="/input">Input</a></li>        
+        <li><a routerLink="/mainPage">Main page</a></li>     
         <router-outlet></router-outlet>  
     </ul>
     <ul *ngIf="this._login.getRole() === 'admin'">
+        <li><a routerLink="/input">Input</a></li>  
         <li><a routerLink="/dashboard">Dashboard</a></li>
+        <li><a routerLink="/camera">Camera</a></li>        
     </ul>    
     <ul>
         <li><a href="#"(click)="logOut($event)">Log out</a></li>

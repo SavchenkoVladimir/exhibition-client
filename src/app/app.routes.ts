@@ -9,6 +9,7 @@ import { SignUpComponent } from './signUp/signUp.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InputComponent } from './input/input.component';
+import { CameraComponent } from './camera/camera.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,4 +19,5 @@ export const routes: Routes = [
     { path: 'mainPage', component: MainPageComponent, canActivate: [UserGuard] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
     { path: 'input', component: InputComponent, canActivate: [AdminGuard] },
+    { path: 'camera', component: CameraComponent, canActivate: [AdminGuard] },    
 ];
