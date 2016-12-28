@@ -1,15 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { enableProdMode } from '@angular/core';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { enableProdMode, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { Ng2CompleterModule } from "ng2-completer";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CheckboxModule, SharedModule, InputTextModule, DialogModule } from 'primeng/primeng';
-
-import { ToggleButtonModule } from 'primeng/primeng';
-import { ButtonModule } from './inherited/toggle';
 
 import { LoginService } from './services/login.service';
 import { UserGuard } from './services/user.guard';
@@ -28,13 +24,17 @@ import { InputComponent } from './input/input.component';
 
 import { TableModule } from './inherited/table';
 import { SwitchModule } from './inherited/input';
+import { ButtonModule } from './inherited/toggle';
+
+// Enable prod mode
+//enableProdMode();
 
 @NgModule({
     imports: [
-        BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(routes),
-        FormsModule, ReactiveFormsModule, Ng2CompleterModule, NgbModule.forRoot(),
-        CheckboxModule, TableModule, SharedModule, BrowserModule,
-        InputTextModule, ButtonModule, DialogModule, SwitchModule
+        BrowserModule, HttpModule, RouterModule.forRoot(routes), FormsModule,
+        ReactiveFormsModule, Ng2CompleterModule, NgbModule.forRoot(), CheckboxModule,
+        TableModule, SharedModule, BrowserModule, InputTextModule, ButtonModule,
+        DialogModule, SwitchModule
     ],
     declarations: [
         AppComponent, HomeComponent, LoginComponent, SignUpComponent, MainPageComponent,

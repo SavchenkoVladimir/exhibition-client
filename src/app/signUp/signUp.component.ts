@@ -4,7 +4,7 @@ import { typedUserDataValidator } from '../validators/typedUserDataValidator';
 import { HttpService } from '../http/http.service';
 import { typedUserData } from '../validators/typedData';
 import { CompleterService, CompleterData } from 'ng2-completer';
-import { Router, NavigationExtras } from "@angular/router";
+import { Router } from "@angular/router";
 import { AlertService } from '../helpers/alert.service';
 
 @Component({

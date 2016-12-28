@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { CheckboxModule } from 'primeng/primeng';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 class CustomPopupComponent {
     number: number = 0;
@@ -64,7 +62,4 @@ export class MainPageComponent {
         }
     }
 
-    ngOnInit() {
-        //        console.log(this.signUpFormData.firstName);
-    }
 }
