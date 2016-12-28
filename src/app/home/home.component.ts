@@ -8,10 +8,10 @@ import { Router, CanActivate } from '@angular/router';
 })
 
 export class HomeComponent {
-    
+
     constructor(private _login: LoginService, private _router: Router) { }
-    
-    logOut(event){
+
+    logOut(event) {
         event.preventDefault();
         this._login.logout();
         this._router.navigate(['login']);

@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { CheckboxModule } from 'primeng/primeng';
@@ -16,8 +16,8 @@ class CustomPopupComponent {
 
 export class MainPageComponent {
 
-//    queryParams;
-//    signUpFormData;
+    //    queryParams;
+    //    signUpFormData;
     message;
     closeResult: string;
     modelRadio = 'left';
@@ -27,13 +27,13 @@ export class MainPageComponent {
         right: false
     };
     selectedCities: string[] = [];
-    selectedCitiesTwo: string[] = [];    
+    selectedCitiesTwo: string[] = [];
     datepickerModel: NgbDateStruct;
 
     constructor(private _route: ActivatedRoute, private _modalService: NgbModal) {
         // Get signUp form params
-//        this.queryParams = this._route.queryParams;
-//        this.signUpFormData = JSON.parse(this.queryParams.value.signUpFormData);
+        //        this.queryParams = this._route.queryParams;
+        //        this.signUpFormData = JSON.parse(this.queryParams.value.signUpFormData);
     }
 
     isWeekend(date: NgbDateStruct) {
@@ -65,6 +65,6 @@ export class MainPageComponent {
     }
 
     ngOnInit() {
-//        console.log(this.signUpFormData.firstName);
+        //        console.log(this.signUpFormData.firstName);
     }
 }

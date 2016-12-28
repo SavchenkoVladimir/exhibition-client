@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 
 @Component({
@@ -22,7 +22,8 @@ export class LoginComponent {
         let body = this.user;
         this._loginService.login(body)
             .subscribe(
-                data => {this._router.navigate(['/home']);
+            data => {
+                this._router.navigate(['/home']);
             },
             err => { console.log(JSON.stringify(err)) }
             );

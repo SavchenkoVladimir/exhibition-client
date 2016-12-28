@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-//import { DataTable } from 'primeng/primeng';//Is needed if Datatable is overridden directly.
 import { HttpService } from '../http/http.service';
 import { AlertService } from '../helpers/alert.service';
 import { Col } from '../helpers/col.declaration';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
-//import { Table } from '../table/table.component';
 
 @Component({
     selector: 'my-app',
@@ -27,29 +24,12 @@ export class DashboardComponent implements OnInit {
 
     constructor(private _http: HttpService, public alertService: AlertService) {
 
-        // This is a way to owerwrite libruary class property
-//        DataTable.prototype.filter = function(value, field, matchMode) {
-//
-//            this.filterConstraints.equals = function(value, filter) { };
-//            this.filterConstraints.regex = function(value, filter) { };
-//
-//            if (!this.isFilterBlank(value))
-//                this.filters[field] = { value: value, matchMode: matchMode };
-//            else if (this.filters[field])
-//                delete this.filters[field];
-//            if (this.lazy) {
-//                this.stopFilterPropagation = true;
-//            }
-//            this._filter();
-//        };
-        //-----------------------------    
-//        console.log(Table)      ;
     }
 
     ngOnInit(): void {
         this.getQuizResults();
         this.cols = [
-            { field: 'name', header: 'name', placeholder: "starts with"/*, matchmode: "regex"*/ },
+            { field: 'name', header: 'name', placeholder: "starts with", matchmode: "regex" },
             { field: 'email', header: 'email', placeholder: "contain", matchmode: "startsWith" },
             { field: 'goal', header: 'goal', placeholder: "contain", matchmode: "startsWith" },
             { field: 'location', header: 'location', placeholder: "equals", matchmode: "startsWith" }
@@ -125,7 +105,7 @@ export class DashboardComponent implements OnInit {
                 this.quizResults = JSON.parse(data['_body']);
 
                 // Debug info
-//                console.log(data);
+                // console.log(data);
             },
             err => {
                 // Has to be handled reasonably
