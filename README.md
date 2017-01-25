@@ -1,3 +1,29 @@
+This is a training project.
+It can be used as a template for angular2 app.
+This app can work offline. The service workers are used to achieve  this feature.
+Basic information about angular2 offline apps can be reached by next link.
+https://coryrylan.com/blog/fast-offline-angular-apps-with-service-workers
+
+To be able to fire this app you have to have live-server installed globally.
+If you have not install it by 'npm install -g live-server'.
+
+Execute next commands from app-root directory:
+    - ng build –prod
+    - npm run sw
+    - npm run static-serve
+to compile and run the offline app.
+
+Also you can fire it just by execute 'ng serve' from app-root directory. In this 
+case it will not has offline feature.
+
+In both cases the app will be available on http://localhost:4200/
+You can change port by 'ng serve --port <port_number>'
+
+The app makes requests to a server to get user info, auth-tokens,  table content and other.
+So the app works with node-restfull app. How to deal with it read its readme.
+
+--------------------------------------------------------------------------------
+
 # OfflineMoz
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
