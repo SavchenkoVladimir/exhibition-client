@@ -8,8 +8,7 @@ import { ViewChild, ViewChildren, Component, OnInit } from '@angular/core';
 export class CameraComponent implements OnInit {
     @ViewChild('hardwareVideo') hardwareVideo: any;
     public nav: any;
-    public mediaStream: any;
-    public video: any;
+    //    public mediaStream: any;
 
     constructor() { }
 
@@ -17,11 +16,10 @@ export class CameraComponent implements OnInit {
         this.nav = navigator;
         this.nav.getUserMedia = (this.nav.getUserMedia || this.nav.webkitGetUserMedia ||
             this.nav.mozGetUserMedia || this.nav.msGetUserMedia);
-        this.hardwareVideo.nativeElement;
     }
 
     cameraTurnOn() {
-        var video = this.hardwareVideo.nativeElement;
+        let video = this.hardwareVideo.nativeElement;
 
         this.nav.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
             //            this.mediaStream = stream.getTracks()[0];
@@ -32,7 +30,7 @@ export class CameraComponent implements OnInit {
 
     cameraTurnOff() {
         let video = this.hardwareVideo.nativeElement;
-        
+
         this.nav.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
             console.log(stream);
             video.src = null;
