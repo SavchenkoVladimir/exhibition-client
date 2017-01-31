@@ -23,10 +23,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { InputComponent } from './input/input.component';
 import { CameraComponent } from './camera/camera.component';
 
-//import { TableModule } from './inherited/table';
-//import { SwitchModule } from './inherited/input';
-
-import { DataTableModule, InputSwitchModule } from 'primeng/primeng';
+import { TableModule } from './inherited/table';
+import { SwitchModule } from './inherited/input';
 
 //enableProdMode();
 
@@ -34,8 +32,8 @@ import { DataTableModule, InputSwitchModule } from 'primeng/primeng';
     imports: [
         BrowserModule, HttpModule, RouterModule.forRoot(routes), FormsModule,
         ReactiveFormsModule, Ng2CompleterModule, NgbModule.forRoot(), CheckboxModule,
-        SharedModule, BrowserModule, InputTextModule, DialogModule, //SwitchModule, 
-        /*TableModule,*/ DataTableModule, InputSwitchModule
+        SharedModule, BrowserModule, InputTextModule, DialogModule, SwitchModule, 
+        TableModule,
     ],
     declarations: [
         AppComponent, HomeComponent, LoginComponent, SignUpComponent, MainPageComponent,
