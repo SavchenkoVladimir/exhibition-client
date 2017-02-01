@@ -31,6 +31,15 @@ export class HttpService {
             .map(data => data);
     }
 
+    public sendImage(body) {
+        let headers = new Headers();
+        let token = localStorage.getItem('auth_token');
+        headers.append('x-access-token', token);
+
+        return this._http.post('http://localhost:3000/app/placeImage', body, { headers: headers })
+            .map(data => data);
+    }
+
     getHeaders() {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');

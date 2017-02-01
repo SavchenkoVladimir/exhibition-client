@@ -1,12 +1,18 @@
 <div class="loggingForm">        
     <h1>Camera</h1>
     <div id="video-container">
-        <video #hardwareVideo width="500" ></video>
-    </div>  
-    <button (click)="cameraTurnOn()">Camera Turn On</button>
-    <button (click)="makeSnapshot()">Make Snapshot</button>  
-    <button (click)="cameraTurnOff()">Camera Turn Off</button>
-    <button (click)="switchDevice()">Switch Devise</button>     
+        <video #hardwareVideo width="640px" height="480px"></video>
+    </div>
+    <div id="buttons_container">
+        <button (click)="cameraTurnOn()">Camera Turn On</button>      
+        <button (click)="cameraTurnOff()">Camera Turn Off</button>
+        <button (click)="makeSnapshot()">Make Snapshot</button>
+        <button (click)="switchDevice()">Switch Devise</button>     
+    </div>
+    <div id="snapshot_container">
+        <!--        <canvas id="canvas" width="500"></canvas> -->
+        <canvas #myCanvas ></canvas>
+    </div>
     <ul>
         <li><a routerLink="/home">Go home</a></li>
         <router-outlet></router-outlet>  
