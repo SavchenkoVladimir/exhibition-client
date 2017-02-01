@@ -10,14 +10,15 @@ import { AlertService } from '../helpers/alert.service';
 export class CameraComponent implements OnInit {
     @ViewChild('hardwareVideo') hardwareVideo: any;
     @ViewChild('myCanvas') canvas;
-    public nav: any;    
+    public nav: any;
 
-    constructor(private _http: HttpService, public alertService: AlertService) { }
+    constructor(private _http: HttpService, public alertService: AlertService) {
+        this.nav = navigator;
+    }
 
     public ngOnInit(): void {
-        this.nav = navigator;
-        this.nav.getUserMedia = (this.nav.mozGetUserMedia || this.nav.getUserMedia || this.nav.webkitGetUserMedia ||
-            this.nav.msGetUserMedia);
+        this.nav.getUserMedia = (navigator.mozGetUserMedia ||
+            navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia);
     }
 
     public cameraTurnOn() {
@@ -58,7 +59,7 @@ export class CameraComponent implements OnInit {
         this.sendImage(file);
     }
 
-    public sendImage(image) {        
+    public sendImage(image) {
         var formData: any = new FormData();
         formData.append("uploads[]", image);
 
