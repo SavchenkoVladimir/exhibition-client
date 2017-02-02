@@ -54,7 +54,8 @@ export class CameraComponent implements OnInit {
         const imageBuffer = new Buffer(image.src.replace(/^data:image\/(png|jpg);base64,/, ''), 'base64')
 
         // Conversion bynary image into file
-        const file = new File([imageBuffer], "foul.png");
+        // TODO: make image name meaningful
+        const file = new File([imageBuffer], `${new Date().getTime()}.png`);
 
         this.sendImage(file);
     }
@@ -63,6 +64,7 @@ export class CameraComponent implements OnInit {
         var formData: any = new FormData();
         formData.append("uploads[]", image);
 
+        // TODO: implement onResolve and onReject methods
         this._http.sendImage(formData).subscribe(
             data => { console.log(data); },
             err => { console.log(err); }
