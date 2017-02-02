@@ -11,40 +11,44 @@ export class CameraComponent implements OnInit {
     @ViewChild('hardwareVideo') hardwareVideo: any;
     @ViewChild('myCanvas') canvas;
     public nav: any;
+    public video: any;
 
-    constructor(private _http: HttpService, public alertService: AlertService) {
-        this.nav = navigator;
-    }
+    constructor(private _http: HttpService, public alertService: AlertService) { }
 
     public ngOnInit(): void {
+        this.nav = navigator;
         this.nav.getUserMedia = (navigator.mozGetUserMedia ||
             navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia);
+        this.video = this.hardwareVideo.nativeElement;
     }
 
     public cameraTurnOn() {
-        let video = this.hardwareVideo.nativeElement;
+        let video = this.video;
 
-        this.nav.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-            video.src = window.URL.createObjectURL(stream);
-            video.play();
-        });
+        // switch bevices boilerplate
+        // console.log(this.nav.mediaDevices.enumerateDevices());
+        this.nav.mediaDevices.getUserMedia({ video: true, audio: false })
+            .then(function(stream) {
+                video.src = window.URL.createObjectURL(stream);
+                video.play();
+            });
     }
 
     public cameraTurnOff() {
-        let video = this.hardwareVideo.nativeElement;
-
-        this.nav.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-            video.src = null;
-        });
+        this.video.src = null;
     }
 
     public makeSnapshot() {
-        const video = this.hardwareVideo.nativeElement;
-        const canvas = this.canvas.nativeElement;
-        const canvasContext = canvas.getContext('2d');
+        let canvas = this.canvas.nativeElement;
+
+        // Set canvas size equal to video size
+        canvas.width = this.video.videoWidth;
+        canvas.height = this.video.videoHeight;
+
+        let canvasContext = canvas.getContext('2d');
 
         // el.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-        canvasContext.drawImage(video, 0, 0);
+        canvasContext.drawImage(this.video, 0, 0);
 
         // Image that we can display
         let image = new Image();

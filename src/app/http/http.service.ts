@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class HttpService {
 
+    // TODO: implement proper Promises and Observables
     constructor(private _http: Http) { }
 
     insertQuizResults(body) {

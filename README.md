@@ -22,6 +22,9 @@ You can change port by 'ng serve --port <port_number>'
 The app makes requests to a server to get user info, auth-tokens,  table content and other.
 So the app works with node-restfull app. How to deal with it read its readme.
 
+There is a probably convenient library that could be used to simplify take snapshot feature:
+https://github.com/jhuckaby/webcamjs
+ 
 --------------------------------------------------------------------------------
 
 # OfflineMoz
