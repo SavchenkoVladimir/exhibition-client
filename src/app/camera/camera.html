@@ -4,14 +4,21 @@
         <video #hardwareVideo></video>
     </div>
     <div id="buttons_container">
+        <div class="slider_container">
+            <p-slider [(ngModel)]="videoBrightness" (onChange)="changeVideoBrightness()"></p-slider>              
+        </div>
         <button (click)="cameraTurnOn()">Camera Turn On</button>      
         <button (click)="cameraTurnOff()">Camera Turn Off</button>
         <button (click)="makeSnapshot()">Make Snapshot</button>
         <button (click)="switchDevice()">Switch Devise</button>     
+        <button (click)="configureVideoBrightness()">Switch Devise</button> 
     </div>
     <div id="snapshot_container">        
-        <canvas #myCanvas></canvas>
+        <canvas #myCanvas ></canvas>
     </div>
+
+
+    
     <ul>
         <li><a routerLink="/home">Go home</a></li>
         <router-outlet></router-outlet>  

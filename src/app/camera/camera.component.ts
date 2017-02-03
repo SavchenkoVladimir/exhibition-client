@@ -12,13 +12,15 @@ export class CameraComponent implements OnInit {
     @ViewChild('myCanvas') canvas;
     public nav: any;
     public video: any;
+    public videoBrightness: number;
 
     constructor(private _http: HttpService, public alertService: AlertService) { }
 
     public ngOnInit(): void {
+        this.videoBrightness = 50;
         this.nav = navigator;
-        this.nav.getUserMedia = (navigator.mozGetUserMedia ||
-            navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia);
+        this.nav.getUserMedia = (window.navigator.mozGetUserMedia ||
+            window.navigator.getUserMedia || window.navigator.webkitGetUserMedia || window.navigator.msGetUserMedia);
         this.video = this.hardwareVideo.nativeElement;
     }
 
@@ -27,6 +29,7 @@ export class CameraComponent implements OnInit {
 
         // switch bevices boilerplate
         // console.log(this.nav.mediaDevices.enumerateDevices());
+
         this.nav.mediaDevices.getUserMedia({ video: true, audio: false })
             .then(function(stream) {
                 video.src = window.URL.createObjectURL(stream);
@@ -45,21 +48,30 @@ export class CameraComponent implements OnInit {
         canvas.width = this.video.videoWidth;
         canvas.height = this.video.videoHeight;
 
+
+//        debugger;
         let canvasContext = canvas.getContext('2d');
+        console.log(canvasContext);
+
+        // Brightness configuration
+//        canvasContext.filter = `brightness(${this.video.style.filter + 50}%)`;
 
         // el.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
         canvasContext.drawImage(this.video, 0, 0);
 
         // Image that we can display
         let image = new Image();
-        image.src = canvas.toDataURL("image/png");
+        image.crossOrigin = 'anonymous';
 
+        // Broken    
+        image.src = canvas.toDataURL("image/jpeg", 1.0);
+     
         // Conversion image into bynary
-        const imageBuffer = new Buffer(image.src.replace(/^data:image\/(png|jpg);base64,/, ''), 'base64')
+        const imageBuffer = new Buffer(new1.src.replace(/^data:image\/(png|jpeg);base64,/, ''), 'base64');
 
         // Conversion bynary image into file
         // TODO: make image name meaningful
-        const file = new File([imageBuffer], `${new Date().getTime()}.png`);
+        const file = new File([imageBuffer], `${new Date().getTime()}.jpeg`);
 
         this.sendImage(file);
     }
@@ -73,6 +85,10 @@ export class CameraComponent implements OnInit {
             data => { console.log(data); },
             err => { console.log(err); }
         );
+    }
+
+    public changeVideoBrightness() {
+        this.video.style.filter = `brightness(${this.videoBrightness + 50}%)`;
     }
 
     public switchDevice() {

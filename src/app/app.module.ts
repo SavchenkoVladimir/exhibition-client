@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { /*enableProdMode,*/ NgModule } from '@angular/core';
+import { enableProdMode, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { Ng2CompleterModule } from "ng2-completer";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CheckboxModule, SharedModule, InputTextModule, DialogModule } from 'primeng/primeng';
+import { CheckboxModule, SharedModule, InputTextModule, DialogModule, SliderModule } from 'primeng/primeng';
 
 import { LoginService } from './services/login.service';
 import { UserGuard } from './services/user.guard';
@@ -26,14 +26,14 @@ import { CameraComponent } from './camera/camera.component';
 import { TableModule } from './inherited/table';
 import { SwitchModule } from './inherited/input';
 
-//enableProdMode();
+enableProdMode();
 
 @NgModule({
     imports: [
         BrowserModule, HttpModule, RouterModule.forRoot(routes), FormsModule,
         ReactiveFormsModule, Ng2CompleterModule, NgbModule.forRoot(), CheckboxModule,
-        SharedModule, BrowserModule, InputTextModule, DialogModule, SwitchModule, 
-        TableModule,
+        SharedModule, BrowserModule, InputTextModule, DialogModule, SliderModule,
+        SwitchModule, TableModule,
     ],
     declarations: [
         AppComponent, HomeComponent, LoginComponent, SignUpComponent, MainPageComponent,
