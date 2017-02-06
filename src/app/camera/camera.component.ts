@@ -48,13 +48,11 @@ export class CameraComponent implements OnInit {
         canvas.width = this.video.videoWidth;
         canvas.height = this.video.videoHeight;
 
-
-//        debugger;
         let canvasContext = canvas.getContext('2d');
         console.log(canvasContext);
 
         // Brightness configuration
-//        canvasContext.filter = `brightness(${this.video.style.filter + 50}%)`;
+        canvasContext.filter = this.video.style.filter;
 
         // el.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
         canvasContext.drawImage(this.video, 0, 0);
@@ -63,11 +61,11 @@ export class CameraComponent implements OnInit {
         let image = new Image();
         image.crossOrigin = 'anonymous';
 
-        // Broken    
+        // TODO: throw error if app is being run in mozilla
         image.src = canvas.toDataURL("image/jpeg", 1.0);
      
         // Conversion image into bynary
-        const imageBuffer = new Buffer(new1.src.replace(/^data:image\/(png|jpeg);base64,/, ''), 'base64');
+        const imageBuffer = new Buffer(image.src.replace(/^data:image\/(png|jpeg);base64,/, ''), 'base64');
 
         // Conversion bynary image into file
         // TODO: make image name meaningful
