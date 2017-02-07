@@ -28,10 +28,11 @@ export class CameraComponent implements OnInit {
         let video = this.video;
 
         // switch bevices boilerplate
-        // console.log(this.nav.mediaDevices.enumerateDevices());
+//         console.log(this.nav.mediaDevices.enumerateDevices());
 
         this.nav.mediaDevices.getUserMedia({ video: true, audio: false })
             .then(function(stream) {
+                console.log(stream);
                 video.src = window.URL.createObjectURL(stream);
                 video.play();
             });
@@ -64,7 +65,7 @@ export class CameraComponent implements OnInit {
         // TODO: throw error if app is being run in mozilla
         image.src = canvas.toDataURL("image/jpeg", 1.0);
      
-        // Conversion image into bynary
+        // Conversion image into bynary bitmap 
         const imageBuffer = new Buffer(image.src.replace(/^data:image\/(png|jpeg);base64,/, ''), 'base64');
 
         // Conversion bynary image into file
