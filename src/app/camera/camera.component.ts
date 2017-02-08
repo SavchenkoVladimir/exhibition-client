@@ -32,7 +32,6 @@ export class CameraComponent implements OnInit {
 
         this.nav.mediaDevices.getUserMedia({ video: true, audio: false })
             .then(function(stream) {
-                console.log(stream);
                 video.src = window.URL.createObjectURL(stream);
                 video.play();
             });
@@ -50,7 +49,6 @@ export class CameraComponent implements OnInit {
         canvas.height = this.video.videoHeight;
 
         let canvasContext = canvas.getContext('2d');
-        console.log(canvasContext);
 
         // Brightness configuration
         canvasContext.filter = this.video.style.filter;
