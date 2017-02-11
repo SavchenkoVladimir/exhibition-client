@@ -1,5 +1,6 @@
-This is a training project.
-It can be used as a template for angular2 app.
+This is a preliminary project.
+It will be used as a template for client-side app written with angular2.
+
 This app can work offline. The service workers are used to achieve  this feature.
 Basic information about angular2 offline apps can be reached by next link.
 https://coryrylan.com/blog/fast-offline-angular-apps-with-service-workers
@@ -25,7 +26,7 @@ So the app works with node-restfull app. How to deal with it read its readme.
 There is a probably convenient library that could be used to simplify take snapshot feature:
 https://github.com/jhuckaby/webcamjs
  
-To set breakpoint just write: debugger;
+
 --------------------------------------------------------------------------------
 
 # OfflineMoz

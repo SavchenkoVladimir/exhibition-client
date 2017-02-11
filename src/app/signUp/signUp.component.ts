@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { typedUserDataValidator } from '../validators/typedUserDataValidator';
 import { HttpService } from '../http/http.service';
@@ -12,20 +12,23 @@ import { AlertService } from '../helpers/alert.service';
     templateUrl: './signUpForm.html'
 })
 
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
     private sendFormAttempts = 10;
     private dataSendAttemptsCounter: number;
 
     constructor(fb: FormBuilder, private _http: HttpService,
         private _completerService: CompleterService, public alertService: AlertService
     ) {
-        setInterval(() => { this.sendLocalData(); }, 30000);
         this.form = fb.group({
             "name": this.name,
             "email": this.email,
             "goal": this.goal,
             "location": this.location
         });
+    }
+
+    ngOnInit() {
+        setInterval(() => { this.sendLocalData(); }, 30000);
         this.dataService = this._completerService.local(this.searchData, 'country', 'country');
     }
 
