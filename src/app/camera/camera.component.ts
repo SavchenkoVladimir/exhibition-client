@@ -19,15 +19,15 @@ export class CameraComponent implements OnInit {
     public ngOnInit(): void {
         this.videoBrightness = 50;
         this.nav = navigator;
-        this.nav.getUserMedia = (window.navigator.mozGetUserMedia ||
-            window.navigator.getUserMedia || window.navigator.webkitGetUserMedia || window.navigator.msGetUserMedia);
+        this.nav.getUserMedia = (this.nav.mozGetUserMedia || this.nav.getUserMedia ||
+            this.nav.webkitGetUserMedia || this.nav.msGetUserMedia);
         this.video = this.hardwareVideo.nativeElement;
     }
 
     public cameraTurnOn() {
         let video = this.video;
 
-        // switch bevices boilerplate
+        // switch devices boilerplate
 //         console.log(this.nav.mediaDevices.enumerateDevices());
 
         this.nav.mediaDevices.getUserMedia({ video: true, audio: false })
