@@ -10,6 +10,7 @@
         <li><a routerLink="/input">Input</a></li>  
         <li><a routerLink="/dashboard">Dashboard</a></li>
         <li><a routerLink="/camera">Camera</a></li>        
+        <li><a [routerLink]="['/questionnaire']" [queryParams]="{ businessCartData: 'Param from home page.' }">Questionnaire</a></li>
     </ul>    
     <ul>
         <li><a href="#"(click)="logOut($event)">Log out</a></li>

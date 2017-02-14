@@ -1,4 +1,4 @@
-This is a training project.
+This is a preparatory project.
 It can be used as a template for angular2 app.
 This app can work offline. The service workers are used to achieve  this feature.
 Basic information about angular2 offline apps can be reached by next link.
