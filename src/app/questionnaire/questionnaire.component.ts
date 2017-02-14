@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     selector: 'my-app',
@@ -8,11 +8,15 @@ import { Location } from '@angular/common';
     styleUrls: ['./questionnaire.css']
 })
 export class QuestionnaireComponent implements OnInit {
-    busibessCartData: any = 'questionnaire';
+    businessCartData: any = 'questionnaire';
 
-    constructor(private route: ActivatedRoute, private router: Router) { }
+    constructor(private route: ActivatedRoute) { }
 
     ngOnInit() {
-        this.busibessCartData = this.route.snapshot.params;
+        this.route
+            .queryParams
+            .subscribe(params => {
+                this.businessCartData = params['businessCartData'] || 'Param is not passed.';
+            });
     }
 }

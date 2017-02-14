@@ -25,10 +25,9 @@ enableProdMode();
 
 @NgModule({
     imports: [
-        BrowserModule, HttpModule, AppRoutingModule, FormsModule,
-        ReactiveFormsModule, Ng2CompleterModule, NgbModule.forRoot(), CheckboxModule,
-        SharedModule, BrowserModule, InputTextModule, DialogModule, SliderModule,
-        SwitchModule, TableModule
+        BrowserModule, HttpModule, AppRoutingModule, FormsModule, ReactiveFormsModule,
+        Ng2CompleterModule, NgbModule.forRoot(), CheckboxModule, SharedModule, BrowserModule,
+        InputTextModule, DialogModule, SliderModule, SwitchModule, TableModule
     ],
     declarations: [
         AppComponent, HomeComponent, LoginComponent, SignUpComponent, MainPageComponent,
