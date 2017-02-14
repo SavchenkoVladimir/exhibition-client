@@ -1,4 +1,5 @@
 import { ViewChild, ViewChildren, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpService } from '../http/http.service';
 import { AlertService } from '../helpers/alert.service';
 
@@ -14,7 +15,7 @@ export class CameraComponent implements OnInit {
     public video: any;
     public videoBrightness: number;
 
-    constructor(private _http: HttpService, public alertService: AlertService) { }
+    constructor(private _http: HttpService, public alertService: AlertService, private _router: Router) { }
 
     public ngOnInit(): void {
         this.videoBrightness = 50;
@@ -28,7 +29,7 @@ export class CameraComponent implements OnInit {
         let video = this.video;
 
         // switch bevices boilerplate
-//         console.log(this.nav.mediaDevices.enumerateDevices());
+        //         console.log(this.nav.mediaDevices.enumerateDevices());
 
         this.nav.mediaDevices.getUserMedia({ video: true, audio: false })
             .then(function(stream) {
@@ -62,7 +63,7 @@ export class CameraComponent implements OnInit {
 
         // TODO: throw error if app is being run in mozilla
         image.src = canvas.toDataURL("image/jpeg", 1.0);
-     
+
         // Conversion image into bynary bitmap 
         const imageBuffer = new Buffer(image.src.replace(/^data:image\/(png|jpeg);base64,/, ''), 'base64');
 
@@ -79,7 +80,10 @@ export class CameraComponent implements OnInit {
 
         // TODO: implement onResolve and onReject methods
         this._http.sendImage(formData).subscribe(
-            data => { console.log(data); },
+            data => {
+                console.log(data);
+                this._router.navigate(['/questionnaire', { busibessCartData: data }]);
+            },
             err => { console.log(err); }
         );
     }
@@ -88,6 +92,7 @@ export class CameraComponent implements OnInit {
         this.video.style.filter = `brightness(${this.videoBrightness + 50}%)`;
     }
 
+    // TODO: implement the method
     public switchDevice() {
 
     }
