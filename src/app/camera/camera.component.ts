@@ -81,7 +81,7 @@ export class CameraComponent implements OnInit {
         // TODO: implement onResolve and onReject methods
         this._http.sendImage(formData).subscribe(
             data => {
-                this._router.navigate(['/questionnaire'], { queryParams: { businessCartData: data.text() } });
+//                this._router.navigate(['/questionnaire'], { queryParams: { businessCartData: data.text() } });
             },
             err => { console.log(err); }
         );
