@@ -15,7 +15,8 @@ import { AlertService } from '../helpers/alert.service';
 export class SignUpComponent implements OnInit {
     private sendFormAttempts = 10;
     private dataSendAttemptsCounter: number;
-
+    private counter: number = 0;
+    
     constructor(fb: FormBuilder, private _http: HttpService,
         private _completerService: CompleterService, public alertService: AlertService
     ) {
@@ -28,7 +29,7 @@ export class SignUpComponent implements OnInit {
     }
 
     ngOnInit() {
-        setInterval(() => { this.sendLocalData(); }, 30000);
+        setInterval(() => { this.sendLocalData(); }, 6000);
         this.dataService = this._completerService.local(this.searchData, 'country', 'country');
     }
 
@@ -59,14 +60,8 @@ export class SignUpComponent implements OnInit {
             let formData = this.form.value;
 
             this._http.insertQuizResults(formData)
-                .subscribe(
-                data => {
-                    this.alertService.setAlertSuccess(`Data is saved successfully`);
-                },
-                err => {
-                    this.putFormLocal(formData);
-                }
-                );
+                .then((data) => this.alertService.setAlertSuccess(`Data is saved successfully`))
+                .catch((error) => this.putFormLocal(formData));
         }
     }
 
@@ -90,31 +85,29 @@ export class SignUpComponent implements OnInit {
     sendLocalData() {
         let storedData = localStorage.getItem('filled_forms');
         if (storedData) {
-            var decodedLocalData = JSON.parse(storedData);
-            var counter = 0;
-
+            var decodedLocalData = JSON.parse(storedData);                       
+            
             for (var i = 0; i < decodedLocalData.length; i++) {
+                this.counter = i;
                 this._http.insertQuizResults(decodedLocalData[i])
-                    .subscribe(
-                    data => {
-                        counter = i;
-                        if (i === decodedLocalData.length) {
-                            localStorage.removeItem('filled_forms');
+                    .then((data) => { 
+
                             this.alertService.setAlertSuccess(`All your data has sent to the server.`);
                         }
-                    },
-                    err => {
-                        let dataLeftover = decodedLocalData.slice(0, i);
+                    })
+                    .catch((error) => {
+                        const counter = this.counter;
+                        let dataLeftover = decodedLocalData.slice(0, counter);
                         localStorage.setItem('filled_forms', JSON.stringify(dataLeftover));
                         this.dataSendAttemptsCounter++;
 
                         if (Number.isInteger(this.dataSendAttemptsCounter / this.sendFormAttempts)) {
                             const message = `You have unsaved data. You have to get the Internet connection to save data.`;
                             this.alertService.warningAlert(message);
-                        }
-                    }
-                    );
+                        }                        
+                    });
             }
         }
     }
+
 }

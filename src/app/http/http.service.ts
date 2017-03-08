@@ -11,11 +11,13 @@ export class HttpService {
     // TODO: implement proper Promises and Observables
     constructor(private _http: Http) { }
 
-    insertQuizResults(body) {
+    insertQuizResults(body): Promise<any[]> {
         let headers = this.getHeaders();
 
         return this._http.post('http://localhost:3000/app/quizResults', body, { headers: headers })
-            .map(data => data);
+            .toPromise()
+            .then(data => data);
+            
     }
 
     updateQuizResults(body) {
@@ -32,7 +34,7 @@ export class HttpService {
             .map(data => data);
     }
 
-    public sendImage(body) {
+    sendImage(body) {
         let headers = new Headers();
         let token = localStorage.getItem('auth_token');
         headers.append('x-access-token', token);

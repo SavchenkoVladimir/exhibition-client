@@ -1,5 +1,6 @@
 This is a preliminary project.
 It will be used as a template for client-side app written with angular2.
+The app purpose is to ease an exhibition quiz.
 
 This app can work offline. The service workers are used to achieve  this feature.
 Basic information about angular2 offline apps can be reached by next link.
@@ -20,16 +21,13 @@ case it will not has offline feature.
 In both cases the app will be available on http://localhost:4200/
 You can change port by 'ng serve --port <port_number>'
 
-The app makes requests to a server to get user info, auth-tokens,  table content and other.
-So the app works with node-restfull app. How to deal with it read its readme.
-
-There is a probably convenient library that could be used to simplify take snapshot feature:
-https://github.com/jhuckaby/webcamjs
+The app makes requests to a REST-server to get user info, auth-tokens,  table content and other.
+So the app works with the 'exhibition-server' app. How to deal with it read its readme.
  
 
 --------------------------------------------------------------------------------
 
-# OfflineMoz
+# CLI Generated
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
 
