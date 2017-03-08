@@ -1,14 +1,14 @@
 import { ViewChild, ViewChildren, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpService } from '../http/http.service';
-import { AlertService } from '../helpers/alert.service';
+import { HttpService } from '../services/http.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
     selector: 'my-app',
-    templateUrl: './camera.html',
-    styleUrls: ['./camera.css']
+    templateUrl: './cardsRecognition.html',
+    styleUrls: ['./cardsRecognition.css']
 })
-export class CameraComponent implements OnInit {
+export class CardsRecognitionComponent implements OnInit {
     @ViewChild('hardwareVideo') hardwareVideo: any;
     @ViewChild('myCanvas') canvas;
     public nav: any;

@@ -12,14 +12,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './logIn/login.component';
 import { SignUpComponent } from './signUp/signUp.component';
-import { MainPageComponent } from './mainPage/mainPage.component';
+import { ThirdPartyExamplesComponent } from './thirdPartyExamples/thirdPartyExamples.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InputComponent } from './input/input.component';
-import { CameraComponent } from './camera/camera.component';
+import { CardsRecognitionComponent } from './cardsRecognition/cardsRecognition.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 
-import { TableModule } from './inherited/table';
-import { SwitchModule } from './inherited/input';
+import { TableModule } from './thirdPartyInherited/table';
+import { SwitchModule } from './thirdPartyInherited/switch';
 
 enableProdMode();
 
@@ -30,8 +30,8 @@ enableProdMode();
         InputTextModule, DialogModule, SliderModule, SwitchModule, TableModule
     ],
     declarations: [
-        AppComponent, HomeComponent, LoginComponent, SignUpComponent, MainPageComponent,
-        DashboardComponent, InputComponent, CameraComponent, QuestionnaireComponent
+        AppComponent, HomeComponent, LoginComponent, SignUpComponent, ThirdPartyExamplesComponent,
+        DashboardComponent, InputComponent, CardsRecognitionComponent, QuestionnaireComponent
     ],
     bootstrap: [AppComponent]
 })

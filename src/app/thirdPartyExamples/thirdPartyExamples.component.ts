@@ -8,11 +8,11 @@ class CustomPopupComponent {
 
 @Component({
     selector: 'my-app',
-    templateUrl: './mainPage.html',
-    styleUrls: ['./mainPage.css'],
+    templateUrl: './thirdPartyExamples.html',
+    styleUrls: ['./thirdPartyExamples.css'],
 })
 
-export class MainPageComponent {
+export class ThirdPartyExamplesComponent {
 
     //    queryParams;
     //    signUpFormData;

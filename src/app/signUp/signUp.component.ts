@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { typedUserDataValidator } from '../validators/typedUserDataValidator';
-import { HttpService } from '../http/http.service';
+import { HttpService } from '../services/http.service';
 import { typedUserData } from '../validators/typedData';
 import { CompleterService, CompleterData } from 'ng2-completer';
 import { Router } from "@angular/router";
-import { AlertService } from '../helpers/alert.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
     selector: 'my-app',
@@ -83,31 +83,31 @@ export class SignUpComponent implements OnInit {
     }
 
     sendLocalData() {
-        let storedData = localStorage.getItem('filled_forms');
-        if (storedData) {
-            var decodedLocalData = JSON.parse(storedData);                       
-            
-            for (var i = 0; i < decodedLocalData.length; i++) {
-                this.counter = i;
-                this._http.insertQuizResults(decodedLocalData[i])
-                    .then((data) => { 
-
-                            this.alertService.setAlertSuccess(`All your data has sent to the server.`);
-                        }
-                    })
-                    .catch((error) => {
-                        const counter = this.counter;
-                        let dataLeftover = decodedLocalData.slice(0, counter);
-                        localStorage.setItem('filled_forms', JSON.stringify(dataLeftover));
-                        this.dataSendAttemptsCounter++;
-
-                        if (Number.isInteger(this.dataSendAttemptsCounter / this.sendFormAttempts)) {
-                            const message = `You have unsaved data. You have to get the Internet connection to save data.`;
-                            this.alertService.warningAlert(message);
-                        }                        
-                    });
-            }
-        }
+//        let storedData = localStorage.getItem('filled_forms');
+//        if (storedData) {
+//            var decodedLocalData = JSON.parse(storedData);                       
+//            
+//            for (var i = 0; i < decodedLocalData.length; i++) {
+//                this.counter = i;
+//                this._http.insertQuizResults(decodedLocalData[i])
+//                    .then((data) => { 
+//
+//                            this.alertService.setAlertSuccess(`All your data has sent to the server.`);
+//                        }
+//                    })
+//                    .catch((error) => {
+//                        const counter = this.counter;
+//                        let dataLeftover = decodedLocalData.slice(0, counter);
+//                        localStorage.setItem('filled_forms', JSON.stringify(dataLeftover));
+//                        this.dataSendAttemptsCounter++;
+//
+//                        if (Number.isInteger(this.dataSendAttemptsCounter / this.sendFormAttempts)) {
+//                            const message = `You have unsaved data. You have to get the Internet connection to save data.`;
+//                            this.alertService.warningAlert(message);
+//                        }                        
+//                    });
+//            }
+//        }
     }
 
 }

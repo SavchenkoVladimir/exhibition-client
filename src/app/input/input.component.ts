@@ -1,3 +1,4 @@
+/* It is an example how to override/extend third party libraries. */
 import { Component } from '@angular/core';
 
 @Component({

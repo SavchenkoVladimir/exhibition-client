@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { HttpService } from '../http/http.service';
-import { AlertService } from '../helpers/alert.service';
-import { Col } from '../helpers/col.declaration';
+import { HttpService } from '../services/http.service';
+import { AlertService } from '../services/alert.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
