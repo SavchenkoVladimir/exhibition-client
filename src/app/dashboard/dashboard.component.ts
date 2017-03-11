@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 import { HttpService } from '../services/http.service';
 import { AlertService } from '../services/alert.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { QuizResult } from '../dashboard/QuizResult';
 
 @Component({
     selector: 'my-app',
     templateUrl: './dashboard.html'
 })
-
 export class DashboardComponent implements OnInit {
-    public quizResults: any[] = [];
+    public quizResults: QuizResult[] = [];
     public cols: any[];
     public currentPage: number = 0;
     public recordsInPage: number = 2;
@@ -56,9 +57,6 @@ export class DashboardComponent implements OnInit {
     setFilter(event) {
         var filterQuery = "";
 
-        // Debug info
-        console.log(event);
-
         if (event.filters.name) {
             filterQuery += `&name__regex=/^${event.filters.name.value}/`;
         }
@@ -78,10 +76,10 @@ export class DashboardComponent implements OnInit {
         }
     }
 
+    //TODO: implement more reasonable error handling
     stringEditing(event) {
-
         this._http.updateQuizResults(event.data)
-            .subscribe(
+            .then(
             data => {
                 this.alertService.setAlertSuccess(`The edited string has been updated successfully.`);
             },
@@ -93,22 +91,18 @@ export class DashboardComponent implements OnInit {
         this.stacked = !this.stacked;
     }
 
+    //TODO: implement more reasonable error handling
     getQuizResults() {
-
         let body = `sort=${this.sortingOrder}${this.sortingField}&limit=${this.recordsInPage}
             &skip=${this.currentPage * this.recordsInPage}${this.filters}`;
 
         this._http.getQuizResults(body)
             .subscribe(
             data => {
-                this.quizResults = JSON.parse(data['_body']);
-
-                // Debug info
-                // console.log(data);
+                this.quizResults = data;
             },
             err => {
-                // Has to be handled reasonably
-                console.log(err);
+                this.alertService.setDangerAlert(err);
             }
             );
     }

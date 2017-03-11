@@ -16,7 +16,7 @@ export class SignUpComponent implements OnInit {
     private sendFormAttempts = 10;
     private dataSendAttemptsCounter: number;
     private counter: number = 0;
-    
+
     constructor(fb: FormBuilder, private _http: HttpService,
         private _completerService: CompleterService, public alertService: AlertService
     ) {
@@ -29,8 +29,9 @@ export class SignUpComponent implements OnInit {
     }
 
     ngOnInit() {
-        setInterval(() => { this.sendLocalData(); }, 6000);
-        this.dataService = this._completerService.local(this.searchData, 'country', 'country');
+        // The offline feature is not yet implemented. 
+        // setInterval(() => { this.sendLocalData(); }, 6000);
+        // this.dataService = this._completerService.local(this.searchData, 'country', 'country');
     }
 
     // TypeAhead config
@@ -55,6 +56,7 @@ export class SignUpComponent implements OnInit {
     goal = new FormControl(""/*, Validators.required*/);
     location = new FormControl(""/*, Validators.compose([Validators.required, Validators.pattern('[A-Za-z0-9]{5}')])*/);
 
+    //TODO: implement more reasonable error handling
     onSubmit() {
         if (this.form.valid) {
             let formData = this.form.value;
@@ -82,32 +84,33 @@ export class SignUpComponent implements OnInit {
         this.alertService.setDangerAlert(message);
     }
 
-    sendLocalData() {
-//        let storedData = localStorage.getItem('filled_forms');
-//        if (storedData) {
-//            var decodedLocalData = JSON.parse(storedData);                       
-//            
-//            for (var i = 0; i < decodedLocalData.length; i++) {
-//                this.counter = i;
-//                this._http.insertQuizResults(decodedLocalData[i])
-//                    .then((data) => { 
-//
-//                            this.alertService.setAlertSuccess(`All your data has sent to the server.`);
-//                        }
-//                    })
-//                    .catch((error) => {
-//                        const counter = this.counter;
-//                        let dataLeftover = decodedLocalData.slice(0, counter);
-//                        localStorage.setItem('filled_forms', JSON.stringify(dataLeftover));
-//                        this.dataSendAttemptsCounter++;
-//
-//                        if (Number.isInteger(this.dataSendAttemptsCounter / this.sendFormAttempts)) {
-//                            const message = `You have unsaved data. You have to get the Internet connection to save data.`;
-//                            this.alertService.warningAlert(message);
-//                        }                        
-//                    });
-//            }
-//        }
-    }
+    // The offline feature is not yet implemented. 
+    //    sendLocalData() {
+    //        let storedData = localStorage.getItem('filled_forms');
+    //        if (storedData) {
+    //            var decodedLocalData = JSON.parse(storedData);                       
+    //            
+    //            for (var i = 0; i < decodedLocalData.length; i++) {
+    //                this.counter = i;
+    //                this._http.insertQuizResults(decodedLocalData[i])
+    //                    .then((data) => { 
+    //
+    //                            this.alertService.setAlertSuccess(`All your data has sent to the server.`);
+    //                        }
+    //                    })
+    //                    .catch((error) => {
+    //                        const counter = this.counter;
+    //                        let dataLeftover = decodedLocalData.slice(0, counter);
+    //                        localStorage.setItem('filled_forms', JSON.stringify(dataLeftover));
+    //                        this.dataSendAttemptsCounter++;
+    //
+    //                        if (Number.isInteger(this.dataSendAttemptsCounter / this.sendFormAttempts)) {
+    //                            const message = `You have unsaved data. You have to get the Internet connection to save data.`;
+    //                            this.alertService.warningAlert(message);
+    //                        }                        
+    //                    });
+    //            }
+    //        }
+    //    }
 
 }

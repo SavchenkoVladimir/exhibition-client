@@ -28,12 +28,13 @@ export class CardsRecognitionComponent implements OnInit {
     public cameraTurnOn() {
         let video = this.video;
 
-        // switch bevices boilerplate
-        //         console.log(this.nav.mediaDevices.enumerateDevices());
+//         switch devices boilerplate
+                 console.log(this.nav.mediaDevices.enumerateDevices());
 
         this.nav.mediaDevices.getUserMedia({ video: true, audio: false })
             .then(function(stream) {
                 video.src = window.URL.createObjectURL(stream);
+                console.log(video);
                 video.play();
             });
     }
@@ -79,9 +80,9 @@ export class CardsRecognitionComponent implements OnInit {
         formData.append("uploads[]", image);
 
         // TODO: implement onResolve and onReject methods
-        this._http.sendImage(formData).subscribe(
+        this._http.sendImage(formData).then(
             data => {
-//                this._router.navigate(['/questionnaire'], { queryParams: { businessCartData: data.text() } });
+                //                this._router.navigate(['/questionnaire'], { queryParams: { businessCartData: data.text() } });
             },
             err => { console.log(err); }
         );

@@ -1,10 +1,7 @@
 This is a preliminary project.
-It will be used as a template for client-side app written with angular2.
-The app purpose is to ease an exhibition quiz.
-
-This app can work offline. The service workers are used to achieve  this feature.
-Basic information about angular2 offline apps can be reached by next link.
-https://coryrylan.com/blog/fast-offline-angular-apps-with-service-workers
+It will be used as a template for client-side app as a service to help exhibition 
+workers to make quiz visitors in more easy way.
+The app is written with angular2.
 
 To be able to fire this app you have to have live-server installed globally.
 If you have not install it by 'npm install -g live-server'.
@@ -21,9 +18,16 @@ case it will not has offline feature.
 In both cases the app will be available on http://localhost:4200/
 You can change port by 'ng serve --port <port_number>'
 
+To deploy the app just execute ng build --prod, copy bundles from dist folder and past
+it into folder served by web server.
+
 The app makes requests to a REST-server to get user info, auth-tokens,  table content and other.
 So the app works with the 'exhibition-server' app. How to deal with it read its readme.
- 
+
+Initially intended the app will can work offline. The service workers are used to 
+achieve  this feature. Basic information about angular2 offline apps can be reached 
+by next link: https://coryrylan.com/blog/fast-offline-angular-apps-with-service-workers.
+But the app uses vendor REST services so at the moment the feature is not implemented. 
 
 --------------------------------------------------------------------------------
 
