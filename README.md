@@ -25,7 +25,6 @@ So the app works with node-restfull app. How to deal with it read its readme.
 There is a probably convenient library that could be used to simplify take snapshot feature:
 https://github.com/jhuckaby/webcamjs
  
-To set breakpoint just write: debugger;
 --------------------------------------------------------------------------------
 
 # OfflineMoz
