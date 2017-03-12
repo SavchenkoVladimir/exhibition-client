@@ -1,10 +1,83 @@
 <div class="questionnaireForm">        
     <h1>Questionnaire</h1>
+    <div *ngIf="this.alertService.alert.message != ''">
+        <ngb-alert [type]="this.alertService.alert.type" (close)="this.alertService.closeAlert()">
+            {{ this.alertService.alert.message }}
+        </ngb-alert>
+    </div>
     {{businessCartData}}
     <ul>       
         <li><a routerLink="/cardsRecognition">Cards recognition</a></li> 
         <li><a routerLink="/home">Go home</a></li>
-    </ul>      
+    </ul> 
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <p>
+            <label>Name:</label>
+            <input type="text" formControlName="name" name="name" />
+        </p> 
+        <div *ngIf="!name.valid && name.touched"  
+            class="error_message">First name is invalid.<br />
+            {{name.errors.error}}
+        </div> 
+        <p>
+            <label>Surname:</label>
+            <input type="text" formControlName="surname" name="surname" />
+        </p> 
+        <div *ngIf="!surname.valid && surname.touched"  
+            class="error_message">Surname is invalid.<br />
+            {{surname.errors.error}}
+        </div>         
+        <p>
+            <label>Organization:</label>
+            <input type="text" formControlName="organization" name="organization" />
+        </p> 
+        <div *ngIf="!organization.valid && organization.touched"  
+            class="error_message">Organization is invalid.<br />
+            {{organization.errors.error}}
+        </div>          
+        <p>
+            <label>Business:</label>
+            <input type="text" formControlName="business" name="business" />
+        </p> 
+        <div *ngIf="!business.valid && business.touched"  
+            class="error_message">Business is invalid.<br />
+            {{business.errors.error}}
+        </div>           
+        <p>
+            <label>Address:</label>
+            <input type="text" formControlName="address" name="address" />
+        </p> 
+        <div *ngIf="!address.valid && address.touched"  
+            class="error_message">Address is invalid.<br />
+            {{address.errors.error}}
+        </div>           
+        <p>
+            <label>Email:</label>
+            <input type="email" formControlName="email" name="email" />
+        </p>
+        <div *ngIf="!email.valid && email.touched"  
+            class="error_message">Email is invalid.
+        </div> 
+        <p>
+            <label>Phone:</label>
+            <input type="text" formControlName="phone" name="phone" />
+        </p>
+        <div *ngIf="!phone.valid && phone.touched"  
+            class="error_message">Phone is invalid.
+        </div>         
+        <p>
+            <label>Goal</label>
+            <input type="goal" formControlName="goal">
+        </p>   
+        <div *ngIf="!goal.valid && goal.touched"  
+            class="error_message">Goal field is invalid.
+        </div> 
+        
+        <p>
+            <button type="submit">Submit</button>
+        </p> 
+        <div *ngIf="form.errors" class="error_message">
+            {{form.errors.error}}
+        </div> 
+    </form>
 </div>
-
-

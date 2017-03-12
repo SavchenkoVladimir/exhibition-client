@@ -3,14 +3,14 @@
     <ul>
         <li><a routerLink="/login">Log in</a></li>
         <li><a routerLink="/signUp">SignUp</a></li>
-        <li><a routerLink="/thirdPartyExamples">Third party examples</a></li>     
+        <li><a routerLink="/thirdPartyExamples">Third party examples</a></li> 
+        <li><a routerLink="/input">Input</a></li>         
         <router-outlet></router-outlet>  
     </ul>
     <ul *ngIf="this._login.getRole() === 'admin'">
-        <li><a routerLink="/input">Input</a></li>  
-        <li><a routerLink="/dashboard">Dashboard</a></li>
-        <li><a routerLink="/cardsRecognition">Cards recognition</a></li>        
-        <li><a [routerLink]="['/questionnaire']" [queryParams]="{ businessCartData: 'Param from home page.' }">Questionnaire</a></li>
+        <li><a [routerLink]="['/questionnaire']" [queryParams]="{ businessCartData: 'Param from home page.' }">Questionnaire</a></li>        
+        <li><a routerLink="/cardsRecognition">Cards recognition</a></li>          
+        <li><a routerLink="/dashboard">Dashboard</a></li>      
     </ul>    
     <ul>
         <li><a href="#"(click)="logOut($event)">Log out</a></li>

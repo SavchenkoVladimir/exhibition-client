@@ -12,7 +12,7 @@
     <i class="fa fa-bars" aria-hidden="true"></i>
 </button>
 
-<p-dataTable [value]="quizResults" [editable]="true" (onEditComplete)="stringEditing($event)"
+<p-dataTable [value]="questionnaireResults" [editable]="true" (onEditComplete)="stringEditing($event)"
     (onFilter)="setFilter($event)" reorderableColumns="true" [responsive]="true" [stacked]="stacked">
     <p-column 
         *ngFor="let col of cols" [field]="col.field" [header]="col.header" 
@@ -27,7 +27,7 @@
                 <span aria-hidden="true">Go here</span>
             </a>
         </li>
-        <li class="page-item" [class.disabled]="quizResults.length < recordsInPage || quizResults.length < 1">
+        <li class="page-item" [class.disabled]="questionnaireResults.length < recordsInPage || questionnaireResults.length < 1">
             <a class="page-link" href="#" aria-label="Next" (click)="pageForward($event)">
                 <span aria-hidden="true">Go there</span>
             </a>

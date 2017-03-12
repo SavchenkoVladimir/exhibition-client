@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { LoginService } from '../services/login.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
     selector: 'my-app',
@@ -10,7 +12,9 @@ import { LoginService } from '../services/login.service';
 
 export class LoginComponent {
 
-    constructor(private _loginService: LoginService, private _router: Router) { }
+    constructor(protected _loginService: LoginService, protected _router: Router,
+        protected alertService: AlertService
+    ) { }
 
     user = {
         name: '',
@@ -20,12 +24,13 @@ export class LoginComponent {
 
     onSubmit() {
         let body = this.user;
+     
         this._loginService.login(body)
-            .subscribe(
+            .then(
             data => {
-                this._router.navigate(['/home']);
+                this._router.navigate(['home']);
             },
-            err => { console.log(JSON.stringify(err)) }
+            err => { this.alertService.setDangerAlert(`Server error. Please, try later.`);  }
             );
     }
 }

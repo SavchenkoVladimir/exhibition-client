@@ -11,7 +11,7 @@ import { AlertService } from '../services/alert.service';
     selector: 'my-app',
     templateUrl: './signUpForm.html'
 })
-
+//TODO: implement the feature
 export class SignUpComponent implements OnInit {
     private sendFormAttempts = 10;
     private dataSendAttemptsCounter: number;
@@ -61,28 +61,30 @@ export class SignUpComponent implements OnInit {
         if (this.form.valid) {
             let formData = this.form.value;
 
-            this._http.insertQuizResults(formData)
-                .then((data) => this.alertService.setAlertSuccess(`Data is saved successfully`))
-                .catch((error) => this.putFormLocal(formData));
+            //            this._http.insertQuizResults(formData)
+            //                .then((data) => this.alertService.setAlertSuccess(`Data is saved successfully`))
+            //                .catch((error) => this.putFormLocal(formData));
+            //        }
         }
     }
 
-    putFormLocal(formData) {
-        let storedData = localStorage.getItem('filled_forms');
-        var decodedStoredData: any = [];
-
-        if (storedData) {
-            var decodedStoredData = JSON.parse(storedData);
-        }
-
-        decodedStoredData.push(formData);
-        var encoded = JSON.stringify(decodedStoredData);
-        localStorage.setItem('filled_forms', encoded);
-
-        const message = `The Internet connection is failed. Your form data are saved locally.
-         You need to get connection to save the data.`;
-        this.alertService.setDangerAlert(message);
-    }
+    // The offline feature is not yet implemented.
+    //    putFormLocal(formData) {
+    //        let storedData = localStorage.getItem('filled_forms');
+    //        var decodedStoredData: any = [];
+    //
+    //        if (storedData) {
+    //            var decodedStoredData = JSON.parse(storedData);
+    //        }
+    //
+    //        decodedStoredData.push(formData);
+    //        var encoded = JSON.stringify(decodedStoredData);
+    //        localStorage.setItem('filled_forms', encoded);
+    //
+    //        const message = `The Internet connection is failed. Your form data are saved locally.
+    //         You need to get connection to save the data.`;
+    //        this.alertService.setDangerAlert(message);
+    //    }
 
     // The offline feature is not yet implemented. 
     //    sendLocalData() {
